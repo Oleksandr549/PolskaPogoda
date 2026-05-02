@@ -1,7 +1,7 @@
 # PolskaPogoda Dashboard
 
 Platforma monitoringu pogody i jakości powietrza dla miast Polski.  
-Projekt Zespołowy 2023/24 · Kolegium Informatyki Stosowanej
+Projekt Zespołowy 2025/26 · Kolegium Informatyki Stosowanej
 
 ## Zespół
 
