@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PolskaPogoda · Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">PolskaPogoda</span>
+    </div>
+    <div class="city-selector-wrap">
+      <label for="city-select" class="sr-only">Wybierz miasto</label>
+      <select id="city-select" class="city-select">
+        <option>Warszawa</option>
+        <option>Kraków</option>
+        <option>Gdańsk</option>
+        <option>Wrocław</option>
+        <option>Poznań</option>
+        <option>Łódź</option>
+        <option>Katowice</option>
+        <option>Szczecin</option>
+        <option>Lublin</option>
+        <option>Białystok</option>
+      </select>
+      <span class="select-arrow">▾</span>
+    </div>
+    <div class="update-time" id="update-time">—</div>
+  </div>
+</header>
+
+<!-- ── MAIN ───────────────────────────────────────────────────────────── -->
+<main class="dashboard">
+
+  
+
+  <!-- ROW 1: Hero + AQI -->
+  <div class="row row--hero">
+
+    <!-- Hero karta: bieżąca pogoda -->
+    <div class="card card--hero" id="card-current">
+      <div class="skeleton-wrap" id="sk-current">
+        <div class="sk sk--big"></div>
+        <div class="sk sk--sm"></div>
+        <div class="sk sk--sm" style="width:60%"></div>
+      </div>
+      <div class="hero-content" id="hero-content" hidden>
+        <div class="hero-top">
+          <div class="weather-icon" id="weather-icon">☀</div>
+          <div class="temp-block">
+            <span class="temp-main" id="temp-main">—</span>
+            <span class="temp-unit">°C</span>
+          </div>
+        </div>
+        <div class="hero-desc" id="hero-desc">—</div>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <span class="meta-label">Odczuwalna</span>
+            <span class="meta-val" id="feels-like">—</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Wilgotność</span>
+            <span class="meta-val" id="humidity">—</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Wiatr</span>
+            <span class="meta-val" id="wind">—</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Zachmurzenie</span>
+            <span class="meta-val" id="cloudcover">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AQI karta -->
+    <div class="card card--aqi" id="card-aqi">
+      <div class="skeleton-wrap" id="sk-aqi">
+        <div class="sk sk--big"></div>
+        <div class="sk sk--sm"></div>
+        <div class="sk sk--bar"></div>
+        <div class="sk sk--bar"></div>
+        <div class="sk sk--bar"></div>
+      </div>
+      <div class="aqi-content" id="aqi-content" hidden>
+        <div class="aqi-header">
+          <span class="aqi-label">Jakość powietrza</span>
+          <span class="aqi-source" id="aqi-source"></span>
+        </div>
+        <div class="aqi-score-row">
+          <div class="aqi-score" id="aqi-score">—</div>
+          <div class="aqi-badge" id="aqi-badge">—</div>
+        </div>
+        <div class="pollutant-bars" id="pollutant-bars"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 2: Wykres temperatury -->
+  <div class="card card--chart">
+    <div class="card-title">Temperatura · ostatnie 48 godzin</div>
+    <div class="skeleton-wrap" id="sk-chart">
+      <div class="sk sk--chart"></div>
+    </div>
+    <div id="chart-wrap" hidden>
+      <canvas id="temp-chart" height="110"></canvas>
+    </div>
+  </div>
+
+  <!-- ROW 3: Prognoza 5-dniowa -->
+  <div class="card card--forecast">
+    <div class="card-title">Prognoza 5-dniowa</div>
+    <div class="forecast-grid" id="forecast-grid">
+      <!-- wypełniane przez JS -->
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <span>Dane: <a href="https://open-meteo.com" target="_blank">Open-Meteo</a> · <a href="https://openaq.org" target="_blank">OpenAQ</a></span>
+  <span>Projekt Zespołowy 2023/24 · Kolegium Informatyki Stosowanej</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
